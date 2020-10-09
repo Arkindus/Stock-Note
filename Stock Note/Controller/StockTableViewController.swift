@@ -9,6 +9,10 @@ import UIKit
 import RealmSwift
 
 class StockTableViewController: UITableViewController {
+    @IBOutlet weak var stockNameLabel: UILabel!
+    @IBOutlet weak var totalQuantityLabel: UILabel!
+    @IBOutlet weak var totalRateLabel: UILabel!
+    @IBOutlet weak var dateUpdatedLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
