@@ -16,6 +16,7 @@
 		BC8D387725306AFB001FC4C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC8D387525306AFB001FC4C8 /* LaunchScreen.storyboard */; };
 		BC8D38922530744B001FC4C8 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D38912530744B001FC4C8 /* Entry.swift */; };
 		BC8D3895253076D0001FC4C8 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D3894253076D0001FC4C8 /* Stock.swift */; };
+		BC8D389925307A83001FC4C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D389825307A83001FC4C8 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		BC8D387825306AFB001FC4C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC8D38912530744B001FC4C8 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		BC8D3894253076D0001FC4C8 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		BC8D389825307A83001FC4C8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F5C31E6ABC4522E06D6A3D58 /* Pods-Stock Note.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stock Note.debug.xcconfig"; path = "Target Support Files/Pods-Stock Note/Pods-Stock Note.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 				BC8D387325306AFB001FC4C8 /* Assets.xcassets */,
 				BC8D387525306AFB001FC4C8 /* LaunchScreen.storyboard */,
 				BC8D387825306AFB001FC4C8 /* Info.plist */,
+				BC8D389825307A83001FC4C8 /* Constants.swift */,
 			);
 			path = "Stock Note";
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 				BC8D386B25306AF8001FC4C8 /* AppDelegate.swift in Sources */,
 				BC8D3895253076D0001FC4C8 /* Stock.swift in Sources */,
 				BC8D386D25306AF8001FC4C8 /* SceneDelegate.swift in Sources */,
+				BC8D389925307A83001FC4C8 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

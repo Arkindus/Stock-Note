@@ -14,4 +14,6 @@ class Entry: Object {
     @objc dynamic var totalRate: Double = 0.0
     @objc dynamic var used: Bool = false
     @objc dynamic var dateCreated: Date?
+    
+    var parentStock = LinkingObjects(fromType: Stock.self, property: K.entries)
 }
