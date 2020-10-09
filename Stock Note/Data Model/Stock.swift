@@ -12,7 +12,7 @@ class Stock: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var totalQuantity: Double = 0.0
     @objc dynamic var totalRate: Double = 0.0
-    @objc dynamic var dateCreated: Date?
+    @objc dynamic var dateUpdated: Date?
     
     let entries = List<Entry>()
 }

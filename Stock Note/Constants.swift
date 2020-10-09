@@ -9,4 +9,5 @@ import Foundation
 
 struct K {
     static let entries = "entries"
+    static let stockSegue = "goToEntries"
 }

@@ -10,13 +10,18 @@
 		4B528DEEE2F42696499464FF /* Pods_Stock_Note.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFA5E745B966FFBFB6EB9A07 /* Pods_Stock_Note.framework */; };
 		BC8D386B25306AF8001FC4C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D386A25306AF8001FC4C8 /* AppDelegate.swift */; };
 		BC8D386D25306AF8001FC4C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D386C25306AF8001FC4C8 /* SceneDelegate.swift */; };
-		BC8D386F25306AF8001FC4C8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D386E25306AF8001FC4C8 /* ViewController.swift */; };
 		BC8D387225306AF8001FC4C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC8D387025306AF8001FC4C8 /* Main.storyboard */; };
 		BC8D387425306AFB001FC4C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC8D387325306AFB001FC4C8 /* Assets.xcassets */; };
 		BC8D387725306AFB001FC4C8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC8D387525306AFB001FC4C8 /* LaunchScreen.storyboard */; };
 		BC8D38922530744B001FC4C8 /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D38912530744B001FC4C8 /* Entry.swift */; };
 		BC8D3895253076D0001FC4C8 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D3894253076D0001FC4C8 /* Stock.swift */; };
 		BC8D389925307A83001FC4C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D389825307A83001FC4C8 /* Constants.swift */; };
+		BC8D389E25307E5A001FC4C8 /* StockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D389D25307E5A001FC4C8 /* StockTableViewController.swift */; };
+		BC8D38A125307E7D001FC4C8 /* EntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D38A025307E7D001FC4C8 /* EntryTableViewController.swift */; };
+		BC8D38A525307FDB001FC4C8 /* StockTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D38A325307FDB001FC4C8 /* StockTableViewCell.swift */; };
+		BC8D38A625307FDB001FC4C8 /* StockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8D38A425307FDB001FC4C8 /* StockTableViewCell.xib */; };
+		BC8D38AA25307FFD001FC4C8 /* EntryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D38A825307FFD001FC4C8 /* EntryTableViewCell.swift */; };
+		BC8D38AB25307FFD001FC4C8 /* EntryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC8D38A925307FFD001FC4C8 /* EntryTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +30,6 @@
 		BC8D386725306AF8001FC4C8 /* Stock Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stock Note.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC8D386A25306AF8001FC4C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC8D386C25306AF8001FC4C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BC8D386E25306AF8001FC4C8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BC8D387125306AF8001FC4C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC8D387325306AFB001FC4C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC8D387625306AFB001FC4C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,6 +37,12 @@
 		BC8D38912530744B001FC4C8 /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		BC8D3894253076D0001FC4C8 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
 		BC8D389825307A83001FC4C8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		BC8D389D25307E5A001FC4C8 /* StockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewController.swift; sourceTree = "<group>"; };
+		BC8D38A025307E7D001FC4C8 /* EntryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableViewController.swift; sourceTree = "<group>"; };
+		BC8D38A325307FDB001FC4C8 /* StockTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewCell.swift; sourceTree = "<group>"; };
+		BC8D38A425307FDB001FC4C8 /* StockTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StockTableViewCell.xib; sourceTree = "<group>"; };
+		BC8D38A825307FFD001FC4C8 /* EntryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableViewCell.swift; sourceTree = "<group>"; };
+		BC8D38A925307FFD001FC4C8 /* EntryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EntryTableViewCell.xib; sourceTree = "<group>"; };
 		F5C31E6ABC4522E06D6A3D58 /* Pods-Stock Note.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stock Note.debug.xcconfig"; path = "Target Support Files/Pods-Stock Note/Pods-Stock Note.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,8 +90,8 @@
 				BC8D386A25306AF8001FC4C8 /* AppDelegate.swift */,
 				BC8D386C25306AF8001FC4C8 /* SceneDelegate.swift */,
 				BC8D388625306CD4001FC4C8 /* Data Model */,
-				BC8D388525306CC0001FC4C8 /* Views */,
-				BC8D388325306CAB001FC4C8 /* Controllers */,
+				BC8D388525306CC0001FC4C8 /* View */,
+				BC8D388325306CAB001FC4C8 /* Controller */,
 				BC8D387325306AFB001FC4C8 /* Assets.xcassets */,
 				BC8D387525306AFB001FC4C8 /* LaunchScreen.storyboard */,
 				BC8D387825306AFB001FC4C8 /* Info.plist */,
@@ -90,20 +100,25 @@
 			path = "Stock Note";
 			sourceTree = "<group>";
 		};
-		BC8D388325306CAB001FC4C8 /* Controllers */ = {
+		BC8D388325306CAB001FC4C8 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				BC8D386E25306AF8001FC4C8 /* ViewController.swift */,
+				BC8D389D25307E5A001FC4C8 /* StockTableViewController.swift */,
+				BC8D38A025307E7D001FC4C8 /* EntryTableViewController.swift */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		BC8D388525306CC0001FC4C8 /* Views */ = {
+		BC8D388525306CC0001FC4C8 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				BC8D387025306AF8001FC4C8 /* Main.storyboard */,
+				BC8D38A325307FDB001FC4C8 /* StockTableViewCell.swift */,
+				BC8D38A425307FDB001FC4C8 /* StockTableViewCell.xib */,
+				BC8D38A825307FFD001FC4C8 /* EntryTableViewCell.swift */,
+				BC8D38A925307FFD001FC4C8 /* EntryTableViewCell.xib */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		BC8D388625306CD4001FC4C8 /* Data Model */ = {
@@ -185,6 +200,8 @@
 			files = (
 				BC8D387725306AFB001FC4C8 /* LaunchScreen.storyboard in Resources */,
 				BC8D387425306AFB001FC4C8 /* Assets.xcassets in Resources */,
+				BC8D38AB25307FFD001FC4C8 /* EntryTableViewCell.xib in Resources */,
+				BC8D38A625307FDB001FC4C8 /* StockTableViewCell.xib in Resources */,
 				BC8D387225306AF8001FC4C8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -238,10 +255,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC8D389E25307E5A001FC4C8 /* StockTableViewController.swift in Sources */,
 				BC8D38922530744B001FC4C8 /* Entry.swift in Sources */,
-				BC8D386F25306AF8001FC4C8 /* ViewController.swift in Sources */,
+				BC8D38A525307FDB001FC4C8 /* StockTableViewCell.swift in Sources */,
+				BC8D38A125307E7D001FC4C8 /* EntryTableViewController.swift in Sources */,
 				BC8D386B25306AF8001FC4C8 /* AppDelegate.swift in Sources */,
 				BC8D3895253076D0001FC4C8 /* Stock.swift in Sources */,
+				BC8D38AA25307FFD001FC4C8 /* EntryTableViewCell.swift in Sources */,
 				BC8D386D25306AF8001FC4C8 /* SceneDelegate.swift in Sources */,
 				BC8D389925307A83001FC4C8 /* Constants.swift in Sources */,
 			);
