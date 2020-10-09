@@ -9,10 +9,8 @@ import UIKit
 import RealmSwift
 
 class StockTableViewController: UITableViewController {
-    @IBOutlet weak var stockNameLabel: UILabel!
-    @IBOutlet weak var totalQuantityLabel: UILabel!
-    @IBOutlet weak var totalRateLabel: UILabel!
-    @IBOutlet weak var dateUpdatedLabel: UILabel!
+    
+    let n: [String] = ["Horse", "Cow", "Camel", "Sheep", "Goat"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +19,17 @@ class StockTableViewController: UITableViewController {
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return n.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:CustomStockCell = tableView.dequeueReusableCell(withIdentifier: K.stockCell) as! CustomStockCell
+        
+        cell.stockNameLabel.text = n[indexPath.row]
+        cell.totalQuantityLabel.text = n[indexPath.row]
+        cell.totalRateLabel.text = n[indexPath.row]
+        cell.dateUpdatedLabel.text = n[indexPath.row]
+        
+        return cell
     }
 }

@@ -18,6 +18,8 @@
 		BC8D389925307A83001FC4C8 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D389825307A83001FC4C8 /* Constants.swift */; };
 		BC8D389E25307E5A001FC4C8 /* StockTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D389D25307E5A001FC4C8 /* StockTableViewController.swift */; };
 		BC8D38A125307E7D001FC4C8 /* EntryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D38A025307E7D001FC4C8 /* EntryTableViewController.swift */; };
+		BC8D38B125309324001FC4C8 /* CustomStockCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D38B025309324001FC4C8 /* CustomStockCell.swift */; };
+		BC8D38B82530A15D001FC4C8 /* CustomEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D38B72530A15D001FC4C8 /* CustomEntryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +37,8 @@
 		BC8D389825307A83001FC4C8 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		BC8D389D25307E5A001FC4C8 /* StockTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockTableViewController.swift; sourceTree = "<group>"; };
 		BC8D38A025307E7D001FC4C8 /* EntryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTableViewController.swift; sourceTree = "<group>"; };
+		BC8D38B025309324001FC4C8 /* CustomStockCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStockCell.swift; sourceTree = "<group>"; };
+		BC8D38B72530A15D001FC4C8 /* CustomEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEntryCell.swift; sourceTree = "<group>"; };
 		F5C31E6ABC4522E06D6A3D58 /* Pods-Stock Note.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stock Note.debug.xcconfig"; path = "Target Support Files/Pods-Stock Note/Pods-Stock Note.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -84,8 +88,9 @@
 				BC8D388625306CD4001FC4C8 /* Data Model */,
 				BC8D388525306CC0001FC4C8 /* View */,
 				BC8D388325306CAB001FC4C8 /* Controller */,
-				BC8D387325306AFB001FC4C8 /* Assets.xcassets */,
+				BC8D387025306AF8001FC4C8 /* Main.storyboard */,
 				BC8D387525306AFB001FC4C8 /* LaunchScreen.storyboard */,
+				BC8D387325306AFB001FC4C8 /* Assets.xcassets */,
 				BC8D387825306AFB001FC4C8 /* Info.plist */,
 				BC8D389825307A83001FC4C8 /* Constants.swift */,
 			);
@@ -104,7 +109,8 @@
 		BC8D388525306CC0001FC4C8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				BC8D387025306AF8001FC4C8 /* Main.storyboard */,
+				BC8D38B025309324001FC4C8 /* CustomStockCell.swift */,
+				BC8D38B72530A15D001FC4C8 /* CustomEntryCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -243,11 +249,13 @@
 			files = (
 				BC8D389E25307E5A001FC4C8 /* StockTableViewController.swift in Sources */,
 				BC8D38922530744B001FC4C8 /* Entry.swift in Sources */,
+				BC8D38B82530A15D001FC4C8 /* CustomEntryCell.swift in Sources */,
 				BC8D38A125307E7D001FC4C8 /* EntryTableViewController.swift in Sources */,
 				BC8D386B25306AF8001FC4C8 /* AppDelegate.swift in Sources */,
 				BC8D3895253076D0001FC4C8 /* Stock.swift in Sources */,
 				BC8D386D25306AF8001FC4C8 /* SceneDelegate.swift in Sources */,
 				BC8D389925307A83001FC4C8 /* Constants.swift in Sources */,
+				BC8D38B125309324001FC4C8 /* CustomStockCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
