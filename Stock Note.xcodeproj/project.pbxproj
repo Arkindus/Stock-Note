@@ -12,7 +12,9 @@
 		BC8BEAC92531590000C45168 /* ArchiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEAC82531590000C45168 /* ArchiveTableViewController.swift */; };
 		BC8BEACC25315B8500C45168 /* CustomArchiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEACB25315B8500C45168 /* CustomArchiveCell.swift */; };
 		BC8BEACF25317AE100C45168 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEACE25317AE100C45168 /* Archive.swift */; };
-		BC8BEAD72531870800C45168 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEAD62531870800C45168 /* DateModel.swift */; };
+		BC8BEAD72531870800C45168 /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEAD62531870800C45168 /* DateFormat.swift */; };
+		BC8BEADA2531C07A00C45168 /* AddEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEAD92531C07A00C45168 /* AddEntryViewController.swift */; };
+		BC8BEADE2531E44800C45168 /* TotalRateCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEADD2531E44800C45168 /* TotalRateCalculator.swift */; };
 		BC8D386B25306AF8001FC4C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D386A25306AF8001FC4C8 /* AppDelegate.swift */; };
 		BC8D386D25306AF8001FC4C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D386C25306AF8001FC4C8 /* SceneDelegate.swift */; };
 		BC8D387225306AF8001FC4C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC8D387025306AF8001FC4C8 /* Main.storyboard */; };
@@ -34,7 +36,9 @@
 		BC8BEAC82531590000C45168 /* ArchiveTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewController.swift; sourceTree = "<group>"; };
 		BC8BEACB25315B8500C45168 /* CustomArchiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomArchiveCell.swift; sourceTree = "<group>"; };
 		BC8BEACE25317AE100C45168 /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
-		BC8BEAD62531870800C45168 /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
+		BC8BEAD62531870800C45168 /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
+		BC8BEAD92531C07A00C45168 /* AddEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryViewController.swift; sourceTree = "<group>"; };
+		BC8BEADD2531E44800C45168 /* TotalRateCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TotalRateCalculator.swift; sourceTree = "<group>"; };
 		BC8D386725306AF8001FC4C8 /* Stock Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stock Note.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC8D386A25306AF8001FC4C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC8D386C25306AF8001FC4C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 			children = (
 				BC8D389D25307E5A001FC4C8 /* StockTableViewController.swift */,
 				BC8D38A025307E7D001FC4C8 /* EntryTableViewController.swift */,
+				BC8BEAD92531C07A00C45168 /* AddEntryViewController.swift */,
 				BC8BEAC5253158DF00C45168 /* RemoveStockViewController.swift */,
 				BC8BEAC82531590000C45168 /* ArchiveTableViewController.swift */,
 			);
@@ -134,7 +139,8 @@
 				BC8D3894253076D0001FC4C8 /* Stock.swift */,
 				BC8D38912530744B001FC4C8 /* Entry.swift */,
 				BC8BEACE25317AE100C45168 /* Archive.swift */,
-				BC8BEAD62531870800C45168 /* DateModel.swift */,
+				BC8BEAD62531870800C45168 /* DateFormat.swift */,
+				BC8BEADD2531E44800C45168 /* TotalRateCalculator.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -263,8 +269,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC8BEAC92531590000C45168 /* ArchiveTableViewController.swift in Sources */,
-				BC8BEAD72531870800C45168 /* DateModel.swift in Sources */,
+				BC8BEAD72531870800C45168 /* DateFormat.swift in Sources */,
 				BC8D389E25307E5A001FC4C8 /* StockTableViewController.swift in Sources */,
+				BC8BEADA2531C07A00C45168 /* AddEntryViewController.swift in Sources */,
 				BC8D38922530744B001FC4C8 /* Entry.swift in Sources */,
 				BC8D38B82530A15D001FC4C8 /* CustomEntryCell.swift in Sources */,
 				BC8D38A125307E7D001FC4C8 /* EntryTableViewController.swift in Sources */,
@@ -275,6 +282,7 @@
 				BC8D38B125309324001FC4C8 /* CustomStockCell.swift in Sources */,
 				BC8BEAC6253158DF00C45168 /* RemoveStockViewController.swift in Sources */,
 				BC8BEACF25317AE100C45168 /* Archive.swift in Sources */,
+				BC8BEADE2531E44800C45168 /* TotalRateCalculator.swift in Sources */,
 				BC8BEACC25315B8500C45168 /* CustomArchiveCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

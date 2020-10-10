@@ -9,6 +9,8 @@ import UIKit
 
 class RemoveStockViewController: UIViewController {
     
+    let dateFormat = DateFormat()
+    
     @IBOutlet weak var stockPicker: UIPickerView!
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var rateTextField: UITextField!
@@ -29,30 +31,14 @@ class RemoveStockViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels // Replace .inline with .compact
         }
-        
     }
     
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
-        let dateFormatter = DateFormatter()
-
-            dateFormatter.dateStyle = DateFormatter.Style.short
-            dateFormatter.timeStyle = DateFormatter.Style.short
-
-            let strDate = dateFormatter.string(from: datePicker.date)
-            print(strDate)
+        datePicker = sender
+        print(datePicker.date)
     }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

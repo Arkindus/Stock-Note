@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct DateFormatter {
+struct DateFormat {
     func dateFormat(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"

@@ -108,7 +108,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="RY3-CK-prM" kind="show" identifier="goToEntries" id="EJx-lb-gqn"/>
+                        <segue destination="RY3-CK-prM" kind="show" identifier="stockSegue" id="EJx-lb-gqn"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGM-YL-x3i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -194,12 +194,96 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="TP4-vJ-Pyb">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="p3W-4V-JPj"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="p3W-4V-JPj">
+                            <connections>
+                                <action selector="addPressed:" destination="RY3-CK-prM" id="9n8-PQ-TZx"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="DaC-Lw-v4b" kind="show" identifier="entrySegue" id="aPk-xg-xW6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A5a-aH-WCO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4686" y="-622"/>
+        </scene>
+        <!--Add Entry View Controller-->
+        <scene sceneID="IB3-06-wSk">
+            <objects>
+                <viewController id="DaC-Lw-v4b" customClass="AddEntryViewController" customModule="Stock_Note" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qhn-3Q-wIN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="U2M-hJ-Fvh">
+                                <rect key="frame" x="0.0" y="140" width="414" height="410"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xVA-QC-Wkx">
+                                        <rect key="frame" x="50" y="0.0" width="314" height="113"/>
+                                        <subviews>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lwj-fb-bIG">
+                                                <rect key="frame" x="0.0" y="0.0" width="314" height="46.5"/>
+                                                <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="46.5" id="LYB-O7-25H"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Individual Rate" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jwR-bM-Odo">
+                                                <rect key="frame" x="0.0" y="66.5" width="314" height="46.5"/>
+                                                <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="46.5" id="KAQ-nP-2OR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="asx-TW-LCd">
+                                        <rect key="frame" x="0.0" y="130" width="414" height="280"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="280" id="X2Q-h8-KoO"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="datePickerChanged:" destination="DaC-Lw-v4b" eventType="valueChanged" id="xKa-mX-z8p"/>
+                                        </connections>
+                                    </datePicker>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="asx-TW-LCd" secondAttribute="trailing" id="05m-M0-4ZU"/>
+                                    <constraint firstAttribute="trailing" secondItem="xVA-QC-Wkx" secondAttribute="trailing" constant="50" id="AwI-Xu-fQ9"/>
+                                    <constraint firstItem="xVA-QC-Wkx" firstAttribute="leading" secondItem="U2M-hJ-Fvh" secondAttribute="leading" constant="50" id="Glc-BU-LUp"/>
+                                    <constraint firstItem="asx-TW-LCd" firstAttribute="leading" secondItem="U2M-hJ-Fvh" secondAttribute="leading" id="J37-Mx-a01"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="4GG-Vh-OMD"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="U2M-hJ-Fvh" firstAttribute="leading" secondItem="4GG-Vh-OMD" secondAttribute="leading" id="b7V-lh-eCp"/>
+                            <constraint firstItem="4GG-Vh-OMD" firstAttribute="trailing" secondItem="U2M-hJ-Fvh" secondAttribute="trailing" id="f4J-0w-YQA"/>
+                            <constraint firstItem="U2M-hJ-Fvh" firstAttribute="top" secondItem="4GG-Vh-OMD" secondAttribute="top" id="lpe-Lo-XoK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7L2-Ja-upr">
+                        <barButtonItem key="rightBarButtonItem" title="Add" id="nK5-hi-6tZ">
+                            <connections>
+                                <action selector="addPressed:" destination="DaC-Lw-v4b" id="uF8-mR-18t"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="datePicker" destination="asx-TW-LCd" id="XhJ-ua-FLC"/>
+                        <outlet property="quantityTextField" destination="Lwj-fb-bIG" id="kNx-aG-XeJ"/>
+                        <outlet property="rateTextField" destination="jwR-bM-Odo" id="jEK-r6-U84"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qkg-Zg-vqL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5615.9420289855079" y="-622.09821428571422"/>
         </scene>
         <!--Add-->
         <scene sceneID="Epg-hh-jWs">
@@ -244,14 +328,14 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cv8-Lj-yY1">
                                                 <rect key="frame" x="0.0" y="0.0" width="314" height="46.5"/>
                                                 <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rate" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="O6K-eT-8SJ">
                                                 <rect key="frame" x="0.0" y="66.5" width="314" height="46.5"/>
                                                 <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
@@ -420,6 +504,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Cq1-9I-tzM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Geu-5Z-ksx">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

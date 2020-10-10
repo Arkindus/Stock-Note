@@ -13,7 +13,7 @@ class StockTableViewController: UITableViewController {
     let realm = try! Realm()
     var stocks: Results<Stock>?
     
-    let dateModel = DateModel()
+    let dateFormat = DateFormat()
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemGreen]
@@ -37,17 +37,24 @@ class StockTableViewController: UITableViewController {
         cell.stockNameLabel?.text = stocks?[indexPath.row].name ?? "No stocks added yet"
         cell.totalQuantityLabel?.text = K.quantity + String(format: "%.2f", stocks?[indexPath.row].totalQuantity ?? 0.0)
         cell.totalRateLabel?.text = K.rate + String(format: "%.2f", stocks?[indexPath.row].totalRate ?? 0.0)
-        cell.dateUpdatedLabel?.text = dateModel.dateFormat(date: stocks?[indexPath.row].dateUpdated ?? Date())
+        cell.dateUpdatedLabel?.text = dateFormat.dateFormat(date: stocks?[indexPath.row].dateUpdated ?? Date())
         
         return cell
     }
    
     //MARK: - TableView Delegate Methods
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: K.stockSegue, sender: self)
+    }
     
-    //MARK: - Add Button
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! EntryTableViewController
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedStock = stocks?[indexPath.row]
+        }
+    }
+    
+    //MARK: - Add Button Pressed
     @IBAction func addPressed(_ sender: UIBarButtonItem) {
         var textField = UITextField()
         
@@ -85,7 +92,7 @@ class StockTableViewController: UITableViewController {
     }
     
     func loadStocks() {
-        stocks = realm.objects(Stock.self)
+        stocks = realm.objects(Stock.self).sorted(byKeyPath: K.dateUpdated, ascending: false)
         tableView.reloadData()
     }
 }
