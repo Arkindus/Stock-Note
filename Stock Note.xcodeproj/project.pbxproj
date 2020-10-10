@@ -12,6 +12,7 @@
 		BC8BEAC92531590000C45168 /* ArchiveTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEAC82531590000C45168 /* ArchiveTableViewController.swift */; };
 		BC8BEACC25315B8500C45168 /* CustomArchiveCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEACB25315B8500C45168 /* CustomArchiveCell.swift */; };
 		BC8BEACF25317AE100C45168 /* Archive.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEACE25317AE100C45168 /* Archive.swift */; };
+		BC8BEAD72531870800C45168 /* DateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8BEAD62531870800C45168 /* DateModel.swift */; };
 		BC8D386B25306AF8001FC4C8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D386A25306AF8001FC4C8 /* AppDelegate.swift */; };
 		BC8D386D25306AF8001FC4C8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC8D386C25306AF8001FC4C8 /* SceneDelegate.swift */; };
 		BC8D387225306AF8001FC4C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC8D387025306AF8001FC4C8 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 		BC8BEAC82531590000C45168 /* ArchiveTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchiveTableViewController.swift; sourceTree = "<group>"; };
 		BC8BEACB25315B8500C45168 /* CustomArchiveCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomArchiveCell.swift; sourceTree = "<group>"; };
 		BC8BEACE25317AE100C45168 /* Archive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Archive.swift; sourceTree = "<group>"; };
+		BC8BEAD62531870800C45168 /* DateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateModel.swift; sourceTree = "<group>"; };
 		BC8D386725306AF8001FC4C8 /* Stock Note.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Stock Note.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC8D386A25306AF8001FC4C8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC8D386C25306AF8001FC4C8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				BC8D3894253076D0001FC4C8 /* Stock.swift */,
 				BC8D38912530744B001FC4C8 /* Entry.swift */,
 				BC8BEACE25317AE100C45168 /* Archive.swift */,
+				BC8BEAD62531870800C45168 /* DateModel.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC8BEAC92531590000C45168 /* ArchiveTableViewController.swift in Sources */,
+				BC8BEAD72531870800C45168 /* DateModel.swift in Sources */,
 				BC8D389E25307E5A001FC4C8 /* StockTableViewController.swift in Sources */,
 				BC8D38922530744B001FC4C8 /* Entry.swift in Sources */,
 				BC8D38B82530A15D001FC4C8 /* CustomEntryCell.swift in Sources */,

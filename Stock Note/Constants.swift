@@ -13,4 +13,6 @@ struct K {
     static let stockCell = "StockCell"
     static let entryCell = "EntryCell"
     static let archiveCell = "ArchiveCell"
+    static let quantity = "Quantity: "
+    static let rate = "Rate: "
 }

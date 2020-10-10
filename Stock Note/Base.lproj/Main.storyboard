@@ -101,7 +101,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Stock Note" id="a1g-4L-mG9">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XR2-Fr-HTO"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="XR2-Fr-HTO">
+                            <connections>
+                                <action selector="addPressed:" destination="3hK-Ny-Dxp" id="GFX-6d-8RQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="RY3-CK-prM" kind="show" identifier="goToEntries" id="EJx-lb-gqn"/>
