@@ -12,6 +12,11 @@ class StockTableViewController: UITableViewController {
     
     let n: [String] = ["Horse", "Cow", "Camel", "Sheep", "Goat"]
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemGreen]
+        navigationController?.navigationBar.tintColor = UIColor.systemGreen
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -31,5 +36,9 @@ class StockTableViewController: UITableViewController {
         cell.dateUpdatedLabel.text = n[indexPath.row]
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: K.stockSegue, sender: self)
     }
 }
