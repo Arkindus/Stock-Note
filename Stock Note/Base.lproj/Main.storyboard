@@ -316,37 +316,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="avv-S5-heB">
-                                <rect key="frame" x="0.0" y="140" width="414" height="648"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="545"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HgI-yJ-gEQ">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="280"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="280" id="1he-Kx-nBN"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="216"/>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wP7-QH-cme">
-                                        <rect key="frame" x="50" y="280" width="314" height="88"/>
+                                        <rect key="frame" x="50" y="216" width="314" height="113"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cv8-Lj-yY1">
-                                                <rect key="frame" x="0.0" y="0.0" width="314" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="314" height="46.5"/>
                                                 <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="46.5" id="FLo-6X-uCn"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rate" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="O6K-eT-8SJ">
-                                                <rect key="frame" x="0.0" y="54" width="314" height="34"/>
+                                                <rect key="frame" x="0.0" y="66.5" width="314" height="46.5"/>
                                                 <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="46.5" id="yIT-3f-jeP"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                         </subviews>
                                     </stackView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Eoe-k2-Aia">
-                                        <rect key="frame" x="0.0" y="368" width="414" height="280"/>
+                                        <rect key="frame" x="0.0" y="329" width="414" height="216"/>
                                         <color key="tintColor" systemColor="systemRedColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="280" id="uZG-jR-cOZ"/>
-                                        </constraints>
                                         <connections>
                                             <action selector="datePickerChanged:" destination="TeY-5q-3aP" eventType="valueChanged" id="hkB-2f-cUW"/>
                                         </connections>
@@ -399,7 +399,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <color key="separatorColor" systemColor="systemYellowColor"/>
                         <searchBar key="tableHeaderView" contentMode="redraw" id="irZ-Zd-AUP">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="508" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
                             <connections>
