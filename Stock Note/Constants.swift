@@ -11,6 +11,7 @@ struct K {
     static let entries = "entries"
     static let stockSegue = "stockSegue"
     static let entrySegue = "entrySegue"
+    static let reloadSegue = "reloadEntry"
     static let stockCell = "StockCell"
     static let entryCell = "EntryCell"
     static let archiveCell = "ArchiveCell"

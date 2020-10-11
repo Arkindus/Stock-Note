@@ -16,14 +16,15 @@ class StockTableViewController: UITableViewController {
     let dateFormat = DateFormat()
     
     override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemGreen]
         navigationController?.navigationBar.tintColor = UIColor.systemGreen
         tableView.rowHeight = 98.5
+        loadStocks()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadStocks()
     }
 
     // MARK: - TableView Data Source Methods

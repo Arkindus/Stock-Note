@@ -22,8 +22,9 @@ class AddEntryViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemGreen]
-        navigationController?.navigationItem.leftBarButtonItem?.tintColor = UIColor.systemRed
+        navigationItem.title = selectedStock?.name
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.label]
+//        navigationController?.navigationItem.leftBarButtonItem?.tintColor = UIColor.systemRed
         navigationController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.systemGreen
         
         quantityTextField.layer.borderWidth = 0.75
@@ -66,7 +67,8 @@ class AddEntryViewController: UIViewController {
                 } catch {
                     print("Error adding new entry, \(error)")
                 }
-                navigationController?.popViewController(animated: true)
+                //navigationController?.popViewController(animated: true)
+                performSegue(withIdentifier: K.reloadSegue, sender: self)
             }
         } else {
             let alert = UIAlertController(title: "Please fill out all fields", message: "", preferredStyle: .alert)

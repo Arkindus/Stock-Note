@@ -21,6 +21,12 @@ class EntryTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.title = selectedStock?.name
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.label]
+        tableView.rowHeight = 81.5
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -55,5 +61,14 @@ class EntryTableViewController: UITableViewController {
     func loadEntries() {
         entries = selectedStock?.entries.sorted(byKeyPath: K.dateCreated, ascending: true)
         tableView.reloadData()
+    }
+    
+    //MARK: - Reload Segue
+    @IBAction func reloadEntryTableView(segue: UIStoryboardSegue) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 }
