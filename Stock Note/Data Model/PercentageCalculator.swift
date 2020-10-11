@@ -9,13 +9,19 @@ import UIKit
 
 struct PercentageCalculator {
     func percentage(from boughtRate: Double, to soldRate: Double) -> String {
-        var percentage: Double
+        var increase: Double
+        var decrease: Double
+        var percent: Double
         if boughtRate <= soldRate {
-            percentage = ((boughtRate / soldRate) * 100)
+            increase = soldRate - boughtRate
+            percent = ((increase / boughtRate) * 100)
+            return String(format: "%.2f", percent)
         } else {
-            percentage = ((soldRate / boughtRate) * 100)
+            decrease = boughtRate - soldRate
+            percent = ((decrease / boughtRate) * 100)
+            return String(format: "%.2f", percent)
         }
-        return String(format: "%.2f", percentage)
+       
     }
     
     func percentageColor(from boughtRate: Double, to soldRate: Double) -> Bool {

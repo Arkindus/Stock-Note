@@ -25,6 +25,7 @@ class RemoveStockViewController: UIViewController {
     @IBOutlet weak var archiveButton: UIBarButtonItem!
     
     var stockRow: Int = 0
+    var currentQuantity: Double = 0.0
     var boughtRate: Double = 0.0
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,43 +71,52 @@ class RemoveStockViewController: UIViewController {
                     
                     if archiveQuantity <= stocks?[stockRow].totalQuantity ?? 0.0 {
                         
-                        var currentQuantity: Double = archiveQuantity
-                        for entry in realm.objects(Entry.self).filter("underStock == %@", stocks?[stockRow].name ?? "None").sorted(byKeyPath: "dateCreated", ascending: true) {
+                        currentQuantity = archiveQuantity
+                        print(currentQuantity)
+                        for entry in realm.objects(Entry.self).filter("underStock == %@", stocks?[stockRow].name ?? "None").sorted(byKeyPath: K.dateCreated, ascending: true) {
                             if entry.quantity <= currentQuantity {
+                                //entry fully depleted
                                 do {
                                     try realm.write {
                                         let currentStock = stocks?[stockRow]
+                                        print("Before: \(currentStock?.totalQuantity)")
                                         currentStock?.totalQuantity -= entry.quantity
+                                        print("After: \(currentStock?.totalQuantity)")
+                                        print("Before: \(currentStock?.totalRate)")
                                         currentStock?.totalRate -= entry.totalRate
+                                        print("After: \(currentStock?.totalRate)")
                                         currentStock?.dateUpdated = Date()
-                                        entry.used = true
-                                        //                                        let newArchive = Archive()
-                                        //                                        newArchive.name = entry.underStock ?? "None"
-                                        //                                        newArchive.quantityArchived
+                                        //entry.used = true
+                                        print("Before delete: \(currentQuantity), \(entry.quantity)")
+                                        currentQuantity -= entry.quantity
+                                        print("After delete: \(currentQuantity), \(entry.quantity)")
                                         boughtRate += entry.totalRate
+                                        print("bought rate delete: \(boughtRate)")
+                                        realm.delete(entry)
                                     }
                                 } catch {
                                     print("Error updating stuff")
                                 }
-                                //print("Before: \(currentQuantity), \(entry.quantity)")
-                                currentQuantity -= entry.quantity
-                                //print("After: \(currentQuantity), \(entry.quantity)")
-                                
                             } else {
+                                //entry updated 
                                 do {
                                     try realm.write {
-                                        //print("Before: \(entry.quantity), \(currentQuantity)")
+                                        print("Before update: \(currentQuantity), \(entry.quantity)")
                                         entry.quantity -= currentQuantity
-                                        //print("After: \(entry.quantity), \(currentQuantity)")
+                                        print("After update: \(currentQuantity), \(entry.quantity)")
                                         
                                         let currentStock = stocks?[stockRow]
-                                        currentStock?.totalQuantity -= entry.quantity
-                                        currentStock?.totalRate -= (entry.quantity * entry.individualRate)
+                                        currentStock?.totalQuantity -= currentQuantity
+//                                        currentStock?.totalRate -= (entry.quantity * entry.individualRate)
+                                        currentStock?.totalRate -= totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
                                         currentStock?.dateUpdated = Date()
+                                        print(entry.individualRate)
+                                        print(currentQuantity)
+                                        boughtRate += totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
                                         currentQuantity = 0.0
+                                        print("bought rate update: \(boughtRate)")
                                         
                                         //boughtRate += (currentQuantity * entry.individualRate)
-                                        boughtRate += totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
                                     }
                                 } catch {
                                     print("Error updating stuff")
@@ -121,16 +131,21 @@ class RemoveStockViewController: UIViewController {
                                 newArchive.name = stocks?[stockRow].name ?? "None"
                                 newArchive.quantityArchived = archiveQuantity
                                 newArchive.rateArchived = archiveRate
-                                let totalArchiveRate = totalRateCalculator.totalRate(newArchive.rateArchived, newArchive.quantityArchived)
-                                newArchive.percentageArchived = percentageCalculator.percentage(from: boughtRate, to: totalArchiveRate)
-                                newArchive.colorProfitOrLoss = percentageCalculator.percentageColor(from: boughtRate, to: totalArchiveRate)
+                                print("bought rate: \(boughtRate)")
+                                let soldRate = totalRateCalculator.totalRate(newArchive.rateArchived, newArchive.quantityArchived)
+                                print("sold rate: \(soldRate)")
+                                newArchive.percentageArchived = percentageCalculator.percentage(from: boughtRate, to: soldRate)
+                                print(newArchive.percentageArchived)
+                                newArchive.colorProfitOrLoss = percentageCalculator.percentageColor(from: boughtRate, to: soldRate)
+                                print(newArchive.colorProfitOrLoss)
+                                boughtRate = 0.0
                                 self.realm.add(newArchive)
                             }
                         } catch {
                             print("Error archiving data, \(error)")
                         }
                         
-                        let alert = UIAlertController(title: "Successfully Archived", message: "", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "Successfully Archived!", message: "", preferredStyle: .alert)
                         let action = UIAlertAction(title: "Ok", style: .default) { (action) in
                             self.stockPicker.reloadAllComponents()
                             self.quantityTextField.text = ""

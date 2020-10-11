@@ -14,6 +14,7 @@ class StockTableViewController: UITableViewController {
     var stocks: Results<Stock>?
     
     let dateFormat = DateFormat()
+    let pc = PercentageCalculator()
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -21,6 +22,8 @@ class StockTableViewController: UITableViewController {
         navigationController?.navigationBar.tintColor = UIColor.systemGreen
         tableView.rowHeight = 98.5
         
+        print(pc.percentage(from: 150, to: 450))
+        print(pc.percentageColor(from: 150, to: 450))
         loadStocks()
     }
     

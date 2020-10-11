@@ -9,8 +9,6 @@ import UIKit
 
 struct TotalRateCalulator {
     func totalRate(_ individualRate: Double, _ quantity: Double) -> Double{
-        let totalRate: Double
-        totalRate = individualRate * quantity
-        return totalRate
+        return (individualRate * quantity)
     }
 }
