@@ -316,26 +316,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="avv-S5-heB">
-                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="648"/>
                                 <subviews>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HgI-yJ-gEQ">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="280"/>
-                                        <color key="tintColor" systemColor="systemRedColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="280" id="1he-Kx-nBN"/>
                                         </constraints>
                                     </pickerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="wP7-QH-cme">
-                                        <rect key="frame" x="50" y="280" width="314" height="113"/>
+                                        <rect key="frame" x="50" y="280" width="314" height="88"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="cv8-Lj-yY1">
-                                                <rect key="frame" x="0.0" y="0.0" width="314" height="46.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="314" height="34"/>
                                                 <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rate" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="O6K-eT-8SJ">
-                                                <rect key="frame" x="0.0" y="66.5" width="314" height="46.5"/>
+                                                <rect key="frame" x="0.0" y="54" width="314" height="34"/>
                                                 <color key="backgroundColor" systemColor="quaternarySystemFillColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
@@ -343,7 +342,7 @@
                                         </subviews>
                                     </stackView>
                                     <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Eoe-k2-Aia">
-                                        <rect key="frame" x="0.0" y="393" width="414" height="280"/>
+                                        <rect key="frame" x="0.0" y="368" width="414" height="280"/>
                                         <color key="tintColor" systemColor="systemRedColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="280" id="uZG-jR-cOZ"/>
@@ -367,15 +366,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="avv-S5-heB" firstAttribute="top" secondItem="kKo-5j-4kJ" secondAttribute="top" id="BmW-0g-yoK"/>
-                            <constraint firstItem="kKo-5j-4kJ" firstAttribute="bottom" secondItem="avv-S5-heB" secondAttribute="bottom" id="Gg6-Yz-o0j"/>
                             <constraint firstItem="kKo-5j-4kJ" firstAttribute="trailing" secondItem="avv-S5-heB" secondAttribute="trailing" id="gdM-ad-0vb"/>
                             <constraint firstItem="avv-S5-heB" firstAttribute="leading" secondItem="kKo-5j-4kJ" secondAttribute="leading" id="kb9-4I-szp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Stock Note" id="ph8-Zl-DzN">
-                        <barButtonItem key="rightBarButtonItem" image="archivebox" catalog="system" id="bYQ-qF-cWc"/>
+                        <barButtonItem key="rightBarButtonItem" image="archivebox" catalog="system" id="bYQ-qF-cWc">
+                            <connections>
+                                <action selector="archivePressed:" destination="TeY-5q-3aP" id="a3x-vA-5rN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="archiveButton" destination="bYQ-qF-cWc" id="1Sk-6C-HIT"/>
                         <outlet property="datePicker" destination="Eoe-k2-Aia" id="otY-cU-kh1"/>
                         <outlet property="quantityTextField" destination="cv8-Lj-yY1" id="boq-1K-nnY"/>
                         <outlet property="rateTextField" destination="O6K-eT-8SJ" id="b7R-uH-wN5"/>

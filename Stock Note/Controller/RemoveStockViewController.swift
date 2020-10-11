@@ -20,6 +20,9 @@ class RemoveStockViewController: UIViewController {
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var rateTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var archiveButton: UIBarButtonItem!
+    
+    var stockRow: Int?
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemRed]
@@ -51,6 +54,10 @@ class RemoveStockViewController: UIViewController {
         print(datePicker.date)
     }
     
+    @IBAction func archivePressed(_ sender: UIBarButtonItem) {
+       
+    }
+    
     //MARK: - Data Manipulation Methods
     func loadPickerView() {
         stocks = realm.objects(Stock.self).sorted(byKeyPath: K.dateUpdated, ascending: false)
@@ -65,14 +72,28 @@ extension RemoveStockViewController: UIPickerViewDataSource, UIPickerViewDelegat
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return stocks?.count ?? 1
+        if let safeCount = stocks?.count {
+            if safeCount != 0 {
+                archiveButton.isEnabled = true
+                stockPicker.isHidden = false
+                return safeCount
+            } else {
+                archiveButton.isEnabled = false
+                stockPicker.isHidden = true
+                return 0
+            }
+        } else {
+            return 0
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return stocks?[row].name ?? "None"
+            return stocks?[row].name ?? "None"
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        stockRow = row
         print(stocks?[row].name)
     }
    
