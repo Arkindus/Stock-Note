@@ -12,7 +12,7 @@ class Archive: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var quantityArchived: Double = 0.0
     @objc dynamic var rateArchived: Double = 0.0
-    @objc dynamic var percentageArchived: Int = 0
+    @objc dynamic var percentageArchived: String = ""
     @objc dynamic var colorProfitOrLoss: Bool = false
     @objc dynamic var dateArchived: Date?
 }

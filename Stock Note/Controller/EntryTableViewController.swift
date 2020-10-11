@@ -59,7 +59,7 @@ class EntryTableViewController: UITableViewController {
     
     //MARK: - Data Manipulation Methods
     func loadEntries() {
-        entries = selectedStock?.entries.sorted(byKeyPath: K.dateCreated, ascending: true)
+        entries = selectedStock?.entries.filter("used == %@", false).sorted(byKeyPath: K.dateCreated, ascending: true)
         tableView.reloadData()
     }
     

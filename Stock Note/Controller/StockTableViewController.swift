@@ -20,6 +20,7 @@ class StockTableViewController: UITableViewController {
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemGreen]
         navigationController?.navigationBar.tintColor = UIColor.systemGreen
         tableView.rowHeight = 98.5
+        
         loadStocks()
     }
     
@@ -62,6 +63,7 @@ class StockTableViewController: UITableViewController {
         let alert = UIAlertController(title: "New Note!", message: "Enter the stock symbol", preferredStyle: .alert)
         
         alert.addTextField { (alertTextField) in
+            alertTextField.autocapitalizationType = .allCharacters
             alertTextField.placeholder = "Stock Symbol"
             textField = alertTextField
         }

@@ -13,7 +13,7 @@ class AddEntryViewController: UIViewController {
     let realm = try! Realm()
     var entries: Results<Entry>?
     
-    let trc = TotalRateCalulator()
+    let totalRateCalculator = TotalRateCalulator()
     
     var selectedStock: Stock?
  
@@ -57,11 +57,12 @@ class AddEntryViewController: UIViewController {
                         let newEntry = Entry()
                         newEntry.quantity = Double(quantity) ?? 0.0
                         newEntry.individualRate = Double(rate) ?? 0.0
-                        newEntry.totalRate = trc.totalRate(Double(quantity) ?? 0.0, Double(rate) ?? 0.0)
+                        newEntry.totalRate = totalRateCalculator.totalRate(Double(quantity) ?? 0.0, Double(rate) ?? 0.0)
                         newEntry.dateCreated = datePicker.date
+                        newEntry.underStock = currentStock.name
                         currentStock.entries.append(newEntry)
                         currentStock.totalQuantity += Double(quantity) ?? 0.0
-                        currentStock.totalRate += trc.totalRate(Double(quantity) ?? 0.0, Double(rate) ?? 0.0)
+                        currentStock.totalRate += totalRateCalculator.totalRate(Double(quantity) ?? 0.0, Double(rate) ?? 0.0)
                         currentStock.dateUpdated = Date()
                     }
                 } catch {
