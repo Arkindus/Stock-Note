@@ -373,7 +373,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Stock Note" id="ph8-Zl-DzN">
-                        <barButtonItem key="rightBarButtonItem" image="minus" catalog="system" id="bYQ-qF-cWc"/>
+                        <barButtonItem key="rightBarButtonItem" image="archivebox" catalog="system" id="bYQ-qF-cWc"/>
                     </navigationItem>
                     <connections>
                         <outlet property="datePicker" destination="Eoe-k2-Aia" id="otY-cU-kh1"/>
@@ -563,7 +563,6 @@
     <resources>
         <image name="archivebox" catalog="system" width="128" height="106"/>
         <image name="arrow.down.circle" catalog="system" width="128" height="121"/>
-        <image name="minus" catalog="system" width="128" height="24"/>
         <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="pencil.slash" catalog="system" width="128" height="113"/>
         <systemColor name="opaqueSeparatorColor">
