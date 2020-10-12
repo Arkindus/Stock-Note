@@ -8,9 +8,19 @@
 import UIKit
 
 struct DateFormat {
-    func dateFormat(date: Date) -> String {
+    func saveFormat(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss a"
+        return dateFormatter.string(from: date)
+    }
+    
+    func entryDate_SFormat(date: Date) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd/MM/yyyy"
         return dateFormatter.string(from: date)
+    }
+    
+    func loadFormat(date: String) -> String {
+        return String(date.prefix(10))
     }
 }

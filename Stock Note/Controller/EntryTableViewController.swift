@@ -13,8 +13,9 @@ class EntryTableViewController: UITableViewController {
     let realm = try! Realm()
     var entries: Results<Entry>?
     
-    let dateFormat = DateFormat()
+    @IBOutlet weak var searchBar: UISearchBar!
     
+    let dateFormat = DateFormat()
     var selectedStock: Stock? {
         didSet {
             loadEntries()
@@ -26,6 +27,10 @@ class EntryTableViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.label]
         tableView.rowHeight = 98.5
         
+        searchBar.delegate = self
+        searchBar.placeholder = "Date"
+        searchBar.keyboardType = .numbersAndPunctuation
+
         loadEntries()
     }
     
@@ -39,18 +44,20 @@ class EntryTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: CustomEntryCell = tableView.dequeueReusableCell(withIdentifier: K.entryCell) as! CustomEntryCell
+        let cell: CustomEntryCell = tableView.dequeueReusableCell(withIdentifier: K.cell.entryCell) as! CustomEntryCell
         
-        cell.entryQuantity?.text = K.quantity + String(format: "%.2f", entries?[indexPath.row].quantity ?? 0.0)
-        cell.entryRate?.text = K.rate + String(format: "%.2f", entries?[indexPath.row].individualRate ?? 0.0)
-        cell.dateCreatedLabel?.text = dateFormat.dateFormat(date: entries?[indexPath.row].dateCreated ?? Date())
+        if let entry = entries?[indexPath.row] {
+            cell.entryQuantity?.text = K.SFormat.quantity + String(format: "%.2f", entry.quantity)
+            cell.entryRate?.text = K.SFormat.rate + String(format: "%.2f", entry.individualRate)
+            cell.dateCreatedLabel?.text = entry.dateCreated_S
+        }
         
         return cell
     }
     
     //MARK: - Add Button Pressed
     @IBAction func addPressed(_ sender: UIBarButtonItem) {
-        performSegue(withIdentifier: K.entrySegue, sender: self)
+        performSegue(withIdentifier: K.segue.entrySegue, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -61,7 +68,7 @@ class EntryTableViewController: UITableViewController {
     
     //MARK: - Data Manipulation Methods
     func loadEntries() {
-        entries = selectedStock?.entries.sorted(byKeyPath: K.dateCreated, ascending: true)
+        entries = selectedStock?.entries.sorted(byKeyPath: K.realm.dateCreated_D, ascending: false)
         tableView.reloadData()
     }
     
@@ -70,6 +77,23 @@ class EntryTableViewController: UITableViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+            }
+        }
+    }
+}
+
+//MARK: - UISearchBarDelegate
+extension EntryTableViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        entries = selectedStock?.entries.filter("dateCreated_S CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: K.realm.dateCreated_D, ascending: false)
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadEntries()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
             }
         }
     }

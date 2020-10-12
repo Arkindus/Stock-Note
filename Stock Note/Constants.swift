@@ -8,15 +8,31 @@
 import Foundation
 
 struct K {
-    static let entries = "entries"
-    static let stockSegue = "stockSegue"
-    static let entrySegue = "entrySegue"
-    static let reloadSegue = "reloadEntry"
-    static let stockCell = "StockCell"
-    static let entryCell = "EntryCell"
-    static let archiveCell = "ArchiveCell"
-    static let quantity = "Quantity: "
-    static let rate = "Rate: "
-    static let dateCreated = "dateCreated"
-    static let dateUpdated = "dateUpdated"
+    
+    struct segue {
+        static let stockSegue = "stockSegue"
+        static let entrySegue = "entrySegue"
+        static let reloadSegue = "reloadEntry"
+    }
+    
+    struct cell {
+        static let stockCell = "StockCell"
+        static let entryCell = "EntryCell"
+        static let archiveCell = "ArchiveCell"
+    }
+    
+    struct SFormat {
+        static let quantity = "Quantity: "
+        static let rate = "Rate: "
+    }
+    
+    struct realm {
+        static let entries = "entries"
+        static let dateCreated_D = "dateCreated_D"
+        static let dateCreated_S = "dateCreated_S"
+        static let dateUpdated = "dateUpdated"
+        static let dateArchived = "dateArchived"
+        static let profit = "arrow.up.circle"
+        static let loss = "arrow.down.circle"
+    }
 }

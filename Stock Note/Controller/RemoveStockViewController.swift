@@ -73,25 +73,25 @@ class RemoveStockViewController: UIViewController {
                         
                         currentQuantity = archiveQuantity
                         print(currentQuantity)
-                        for entry in realm.objects(Entry.self).filter("underStock == %@", stocks?[stockRow].name ?? "None").sorted(byKeyPath: K.dateCreated, ascending: true) {
+                        for entry in realm.objects(Entry.self).filter("underStock == %@", stocks?[stockRow].name ?? "None").sorted(byKeyPath: K.realm.dateCreated_D, ascending: true) {
                             if entry.quantity <= currentQuantity {
                                 //entry fully depleted
                                 do {
                                     try realm.write {
                                         let currentStock = stocks?[stockRow]
-                                        //print("Before: \(currentStock?.totalQuantity)")
+                                        print("Before: \(currentStock?.totalQuantity)")
                                         currentStock?.totalQuantity -= entry.quantity
-                                        //print("After: \(currentStock?.totalQuantity)")
-                                        //print("Before: \(currentStock?.totalRate)")
+                                        print("After: \(currentStock?.totalQuantity)")
+                                        print("Before: \(currentStock?.totalRate)")
                                         currentStock?.totalRate -= totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
-                                        //print("After: \(currentStock?.totalRate)")
-                                        currentStock?.dateUpdated = Date()
+                                        print("After: \(currentStock?.totalRate)")
+                                        currentStock?.dateUpdated = dateFormat.saveFormat(date: Date())
 
-                                        //print("Before delete: \(currentQuantity), \(entry.quantity)")
+                                        print("Before delete: \(currentQuantity), \(entry.quantity)")
                                         currentQuantity -= entry.quantity
-                                        //print("After delete: \(currentQuantity), \(entry.quantity)")
+                                        print("After delete: \(currentQuantity), \(entry.quantity)")
                                         boughtRate += entry.totalRate
-                                        //print("bought rate delete: \(boughtRate)")
+                                        print("bought rate delete: \(boughtRate)")
                                         realm.delete(entry)
                                     }
                                 } catch {
@@ -101,19 +101,19 @@ class RemoveStockViewController: UIViewController {
                                 //entry updated 
                                 do {
                                     try realm.write {
-                                        //print("Before update: \(currentQuantity), \(entry.quantity)")
+                                        print("Before update: \(currentQuantity), \(entry.quantity)")
                                         entry.quantity -= currentQuantity
-                                        //print("After update: \(currentQuantity), \(entry.quantity)")
+                                        print("After update: \(currentQuantity), \(entry.quantity)")
                                         
                                         let currentStock = stocks?[stockRow]
                                         currentStock?.totalQuantity -= currentQuantity
                                         currentStock?.totalRate -= totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
-                                        currentStock?.dateUpdated = Date()
-                                        //print(entry.individualRate)
-                                        //print(currentQuantity)
+                                        currentStock?.dateUpdated = dateFormat.saveFormat(date: Date())
+                                        print(entry.individualRate)
+                                        print(currentQuantity)
                                         boughtRate += totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
                                         currentQuantity = 0.0
-                                        //print("bought rate update: \(boughtRate)")
+                                        print("bought rate update: \(boughtRate)")
                                     }
                                 } catch {
                                     print("Error updating data, \(error)")
@@ -128,14 +128,14 @@ class RemoveStockViewController: UIViewController {
                                 newArchive.name = stocks?[stockRow].name ?? "None"
                                 newArchive.quantityArchived = archiveQuantity
                                 newArchive.rateArchived = archiveRate
-                                //print("bought rate: \(boughtRate)")
+                                print("bought rate: \(boughtRate)")
                                 let soldRate = totalRateCalculator.totalRate(newArchive.rateArchived, newArchive.quantityArchived)
-                                //print("sold rate: \(soldRate)")
+                                print("sold rate: \(soldRate)")
                                 newArchive.percentageArchived = percentageCalculator.percentage(from: boughtRate, to: soldRate)
-                                //print(newArchive.percentageArchived)
+                                print(newArchive.percentageArchived)
                                 newArchive.colorProfitOrLoss = percentageCalculator.percentageColor(from: boughtRate, to: soldRate)
-                                newArchive.dateArchived = datePicker.date
-                                //print(newArchive.colorProfitOrLoss)
+                                newArchive.dateArchived = dateFormat.saveFormat(date: datePicker.date)
+                                print(newArchive.colorProfitOrLoss)
                                 
                                 boughtRate = 0.0
                                 self.realm.add(newArchive)
@@ -174,7 +174,7 @@ class RemoveStockViewController: UIViewController {
     
     //MARK: - Data Manipulation Methods
     func loadPickerView() {
-        stocks = realm.objects(Stock.self).sorted(byKeyPath: K.dateUpdated, ascending: false)
+        stocks = realm.objects(Stock.self).sorted(byKeyPath: K.realm.dateUpdated, ascending: false)
         stockPicker.reloadAllComponents()
     }
 }
@@ -208,6 +208,6 @@ extension RemoveStockViewController: UIPickerViewDataSource, UIPickerViewDelegat
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         stockRow = row
-        print(stocks?[row].name)
+        //print(stocks?[row].name)
     }
 }

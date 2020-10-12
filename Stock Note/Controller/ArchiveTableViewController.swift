@@ -35,21 +35,21 @@ class ArchiveTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: CustomArchiveCell = tableView.dequeueReusableCell(withIdentifier: K.archiveCell) as! CustomArchiveCell
+        let cell: CustomArchiveCell = tableView.dequeueReusableCell(withIdentifier: K.cell.archiveCell) as! CustomArchiveCell
         
         if let archive = archives?[indexPath.row] {
             cell.stockNameLabel.text = archive.name
-            cell.quantityLabel.text = K.quantity + String(archive.quantityArchived)
-            cell.rateLabel.text = K.rate + String(archive.rateArchived)
-            cell.dateArchivedLabel.text = dateFormat.dateFormat(date: archive.dateArchived ?? Date())
+            cell.quantityLabel.text = K.SFormat.quantity + String(archive.quantityArchived)
+            cell.rateLabel.text = K.SFormat.rate + String(archive.rateArchived)
+            cell.dateArchivedLabel.text = dateFormat.loadFormat(date: archive.dateArchived ?? "")
             
             if archive.colorProfitOrLoss == true {
                 cell.percentageLabel.text = archive.percentageArchived + "%"
-                cell.percentageImageView.image = UIImage(systemName: "arrow.up.circle")
+                cell.percentageImageView.image = UIImage(systemName: K.realm.profit)
                 cell.percentageImageView.tintColor = .systemGreen
             } else {
                 cell.percentageLabel.text = archive.percentageArchived + "%"
-                cell.percentageImageView.image = UIImage(systemName: "arrow.down.circle")
+                cell.percentageImageView.image = UIImage(systemName: K.realm.loss)
                 cell.percentageImageView.tintColor = .systemRed
             }
             
@@ -59,7 +59,7 @@ class ArchiveTableViewController: UITableViewController {
     
     //MARK: - Data Manipulation Methods
     func loadArchive() {
-        archives = realm.objects(Archive.self).sorted(byKeyPath: "dateArchived", ascending: false)
+        archives = realm.objects(Archive.self).sorted(byKeyPath: K.realm.dateArchived, ascending: false)
         tableView.reloadData()
     }
 }

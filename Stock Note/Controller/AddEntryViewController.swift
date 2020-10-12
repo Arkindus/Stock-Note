@@ -13,6 +13,7 @@ class AddEntryViewController: UIViewController {
     let realm = try! Realm()
     var entries: Results<Entry>?
     
+    let dateFormat = DateFormat()
     let totalRateCalculator = TotalRateCalulator()
     
     var selectedStock: Stock?
@@ -58,18 +59,19 @@ class AddEntryViewController: UIViewController {
                         newEntry.quantity = Double(quantity) ?? 0.0
                         newEntry.individualRate = Double(rate) ?? 0.0
                         newEntry.totalRate = totalRateCalculator.totalRate(Double(quantity) ?? 0.0, Double(rate) ?? 0.0)
-                        newEntry.dateCreated = datePicker.date
+                        newEntry.dateCreated_D = datePicker.date
+                        newEntry.dateCreated_S = dateFormat.entryDate_SFormat(date: datePicker.date)
                         newEntry.underStock = currentStock.name
                         currentStock.entries.append(newEntry)
                         currentStock.totalQuantity += Double(quantity) ?? 0.0
                         currentStock.totalRate += totalRateCalculator.totalRate(Double(quantity) ?? 0.0, Double(rate) ?? 0.0)
-                        currentStock.dateUpdated = Date()
+                        currentStock.dateUpdated = dateFormat.saveFormat(date: Date())
                     }
                 } catch {
                     print("Error adding new entry, \(error)")
                 }
                 //navigationController?.popViewController(animated: true)
-                performSegue(withIdentifier: K.reloadSegue, sender: self)
+                performSegue(withIdentifier: K.segue.reloadSegue, sender: self)
             }
         } else {
             let alert = UIAlertController(title: "Please fill out all fields", message: "", preferredStyle: .alert)

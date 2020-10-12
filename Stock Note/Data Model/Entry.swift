@@ -12,8 +12,9 @@ class Entry: Object {
     @objc dynamic var quantity: Double = 0.0
     @objc dynamic var individualRate: Double = 0.0
     @objc dynamic var totalRate: Double = 0.0
-    @objc dynamic var dateCreated: Date?
+    @objc dynamic var dateCreated_S: String?
+    @objc dynamic var dateCreated_D: Date?
     @objc dynamic var underStock: String?
     
-    var parentStock = LinkingObjects(fromType: Stock.self, property: K.entries)
+    var parentStock = LinkingObjects(fromType: Stock.self, property: K.realm.entries)
 }

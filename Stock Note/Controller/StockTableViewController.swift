@@ -13,6 +13,8 @@ class StockTableViewController: UITableViewController {
     let realm = try! Realm()
     var stocks: Results<Stock>?
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     let dateFormat = DateFormat()
     let pc = PercentageCalculator()
     
@@ -22,8 +24,10 @@ class StockTableViewController: UITableViewController {
         navigationController?.navigationBar.tintColor = UIColor.systemGreen
         tableView.rowHeight = 98.5
         
-        print(pc.percentage(from: 150, to: 450))
-        print(pc.percentageColor(from: 150, to: 450))
+        searchBar.delegate = self
+        searchBar.autocapitalizationType = .allCharacters
+        searchBar.placeholder = "Stock Symbol"
+        
         loadStocks()
     }
     
@@ -37,19 +41,26 @@ class StockTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:CustomStockCell = tableView.dequeueReusableCell(withIdentifier: K.stockCell) as! CustomStockCell
+        let cell:CustomStockCell = tableView.dequeueReusableCell(withIdentifier: K.cell.stockCell) as! CustomStockCell
         
-        cell.stockNameLabel?.text = stocks?[indexPath.row].name ?? "No stocks added yet"
-        cell.totalQuantityLabel?.text = K.quantity + String(format: "%.2f", stocks?[indexPath.row].totalQuantity ?? 0.0)
-        cell.totalRateLabel?.text = K.rate + String(format: "%.2f", stocks?[indexPath.row].totalRate ?? 0.0)
-        cell.dateUpdatedLabel?.text = dateFormat.dateFormat(date: stocks?[indexPath.row].dateUpdated ?? Date())
+        if let stock = stocks?[indexPath.row] {
+            cell.stockNameLabel?.text = stock.name
+            cell.totalQuantityLabel?.text = K.SFormat.quantity + String(format: "%.2f", stock.totalQuantity)
+            cell.totalRateLabel?.text = K.SFormat.rate + String(format: "%.2f", stock.totalRate)
+            cell.dateUpdatedLabel?.text = dateFormat.loadFormat(date: stock.dateUpdated ?? "")
+        }
+        
+//        cell.stockNameLabel?.text = stocks?[indexPath.row].name ?? "No stocks added yet"
+//        cell.totalQuantityLabel?.text = K.quantity + String(format: "%.2f", stocks?[indexPath.row].totalQuantity ?? 0.0)
+//        cell.totalRateLabel?.text = K.rate + String(format: "%.2f", stocks?[indexPath.row].totalRate ?? 0.0)
+//        cell.dateUpdatedLabel?.text = dateFormat.loadFormat(date: stocks?[indexPath.row].dateUpdated ?? Date())
         
         return cell
     }
    
     //MARK: - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: K.stockSegue, sender: self)
+        performSegue(withIdentifier: K.segue.stockSegue, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -75,7 +86,7 @@ class StockTableViewController: UITableViewController {
         let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
             let newStock = Stock()
             newStock.name = textField.text!
-            newStock.dateUpdated = Date()
+            newStock.dateUpdated = self.dateFormat.saveFormat(date: Date())
             self.saveStock(newStock)
         }
         
@@ -98,7 +109,24 @@ class StockTableViewController: UITableViewController {
     }
     
     func loadStocks() {
-        stocks = realm.objects(Stock.self).sorted(byKeyPath: K.dateUpdated, ascending: false)
+        stocks = realm.objects(Stock.self).sorted(byKeyPath: K.realm.dateUpdated, ascending: false)
         tableView.reloadData()
+    }
+}
+
+//MARK: - UISearchBarDelegate
+extension StockTableViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        stocks = realm.objects(Stock.self).filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: K.realm.dateUpdated, ascending: true)
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadStocks()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
     }
 }

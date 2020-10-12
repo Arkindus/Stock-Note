@@ -108,6 +108,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="86C-bi-Rgh" id="Gy2-PD-LjO"/>
                         <segue destination="RY3-CK-prM" kind="show" identifier="stockSegue" id="EJx-lb-gqn"/>
                     </connections>
                 </tableViewController>
@@ -202,6 +203,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="searchBar" destination="tnr-Sr-UYu" id="wZb-IG-Gf8"/>
                         <segue destination="DaC-Lw-v4b" kind="show" identifier="entrySegue" id="aPk-xg-xW6"/>
                     </connections>
                 </tableViewController>
