@@ -24,7 +24,7 @@ class EntryTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = selectedStock?.name
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.label]
-        tableView.rowHeight = 81.5
+        tableView.rowHeight = 98.5
         
         loadEntries()
     }

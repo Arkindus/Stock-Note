@@ -15,11 +15,11 @@ struct PercentageCalculator {
         if boughtRate <= soldRate {
             increase = soldRate - boughtRate
             percent = ((increase / boughtRate) * 100)
-            return String(format: "%.2f", percent)
+            return String(format: "%.0f", percent)
         } else {
             decrease = boughtRate - soldRate
             percent = ((decrease / boughtRate) * 100)
-            return String(format: "%.2f", percent)
+            return String(format: "%.0f", percent)
         }
        
     }

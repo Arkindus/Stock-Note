@@ -79,47 +79,44 @@ class RemoveStockViewController: UIViewController {
                                 do {
                                     try realm.write {
                                         let currentStock = stocks?[stockRow]
-                                        print("Before: \(currentStock?.totalQuantity)")
+                                        //print("Before: \(currentStock?.totalQuantity)")
                                         currentStock?.totalQuantity -= entry.quantity
-                                        print("After: \(currentStock?.totalQuantity)")
-                                        print("Before: \(currentStock?.totalRate)")
-                                        currentStock?.totalRate -= entry.totalRate
-                                        print("After: \(currentStock?.totalRate)")
+                                        //print("After: \(currentStock?.totalQuantity)")
+                                        //print("Before: \(currentStock?.totalRate)")
+                                        currentStock?.totalRate -= totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
+                                        //print("After: \(currentStock?.totalRate)")
                                         currentStock?.dateUpdated = Date()
-                                        //entry.used = true
-                                        print("Before delete: \(currentQuantity), \(entry.quantity)")
+
+                                        //print("Before delete: \(currentQuantity), \(entry.quantity)")
                                         currentQuantity -= entry.quantity
-                                        print("After delete: \(currentQuantity), \(entry.quantity)")
+                                        //print("After delete: \(currentQuantity), \(entry.quantity)")
                                         boughtRate += entry.totalRate
-                                        print("bought rate delete: \(boughtRate)")
+                                        //print("bought rate delete: \(boughtRate)")
                                         realm.delete(entry)
                                     }
                                 } catch {
-                                    print("Error updating stuff")
+                                    print("Error deleting data, \(error)")
                                 }
                             } else {
                                 //entry updated 
                                 do {
                                     try realm.write {
-                                        print("Before update: \(currentQuantity), \(entry.quantity)")
+                                        //print("Before update: \(currentQuantity), \(entry.quantity)")
                                         entry.quantity -= currentQuantity
-                                        print("After update: \(currentQuantity), \(entry.quantity)")
+                                        //print("After update: \(currentQuantity), \(entry.quantity)")
                                         
                                         let currentStock = stocks?[stockRow]
                                         currentStock?.totalQuantity -= currentQuantity
-//                                        currentStock?.totalRate -= (entry.quantity * entry.individualRate)
                                         currentStock?.totalRate -= totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
                                         currentStock?.dateUpdated = Date()
-                                        print(entry.individualRate)
-                                        print(currentQuantity)
+                                        //print(entry.individualRate)
+                                        //print(currentQuantity)
                                         boughtRate += totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
                                         currentQuantity = 0.0
-                                        print("bought rate update: \(boughtRate)")
-                                        
-                                        //boughtRate += (currentQuantity * entry.individualRate)
+                                        //print("bought rate update: \(boughtRate)")
                                     }
                                 } catch {
-                                    print("Error updating stuff")
+                                    print("Error updating data, \(error)")
                                 }
                                 break
                             }
@@ -131,13 +128,15 @@ class RemoveStockViewController: UIViewController {
                                 newArchive.name = stocks?[stockRow].name ?? "None"
                                 newArchive.quantityArchived = archiveQuantity
                                 newArchive.rateArchived = archiveRate
-                                print("bought rate: \(boughtRate)")
+                                //print("bought rate: \(boughtRate)")
                                 let soldRate = totalRateCalculator.totalRate(newArchive.rateArchived, newArchive.quantityArchived)
-                                print("sold rate: \(soldRate)")
+                                //print("sold rate: \(soldRate)")
                                 newArchive.percentageArchived = percentageCalculator.percentage(from: boughtRate, to: soldRate)
-                                print(newArchive.percentageArchived)
+                                //print(newArchive.percentageArchived)
                                 newArchive.colorProfitOrLoss = percentageCalculator.percentageColor(from: boughtRate, to: soldRate)
-                                print(newArchive.colorProfitOrLoss)
+                                newArchive.dateArchived = datePicker.date
+                                //print(newArchive.colorProfitOrLoss)
+                                
                                 boughtRate = 0.0
                                 self.realm.add(newArchive)
                             }
