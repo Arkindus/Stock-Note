@@ -74,7 +74,7 @@ class ArchiveTableViewController: UITableViewController {
 extension ArchiveTableViewController: UISearchBarDelegate {
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        searchBar.placeholder = "Stock Symbol/Date"
+        searchBar.placeholder = "Stock Symbol/ Date"
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -82,7 +82,7 @@ extension ArchiveTableViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        archives = realm.objects(Archive.self).filter("dateArchived_D CONTAINS[cd] %@ OR name CONTAINS[cd] %@", searchBar.text!, searchBar.text!).sorted(byKeyPath: K.realm.dateArchived_D, ascending: false)
+        archives = realm.objects(Archive.self).filter("dateArchived_S CONTAINS[cd] %@ OR name CONTAINS[cd] %@", searchBar.text!, searchBar.text!).sorted(byKeyPath: K.realm.dateArchived_D, ascending: false)
         tableView.reloadData()
     }
     

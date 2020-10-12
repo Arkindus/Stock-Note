@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import IQKeyboardManagerSwift
 
 class StockTableViewController: UITableViewController {
     
@@ -32,7 +33,6 @@ class StockTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 //        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
 //        tap.cancelsTouchesInView = false
 //        view.addGestureRecognizer(tap)

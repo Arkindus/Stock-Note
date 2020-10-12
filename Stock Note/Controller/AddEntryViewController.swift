@@ -23,7 +23,7 @@ class AddEntryViewController: UIViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationItem.title = selectedStock?.name
+//        navigationItem.title = selectedStock?.name
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.label]
 //        navigationController?.navigationItem.leftBarButtonItem?.tintColor = UIColor.systemRed
         navigationController?.navigationItem.rightBarButtonItem?.tintColor = UIColor.systemGreen
