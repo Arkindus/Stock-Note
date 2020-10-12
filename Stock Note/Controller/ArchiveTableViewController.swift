@@ -23,15 +23,13 @@ class ArchiveTableViewController: UITableViewController {
         
         searchBar.autocapitalizationType = .allCharacters
         
+        tableView.tableFooterView = UIView()
+        
         loadArchive()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let tap = UIGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-//        tap.cancelsTouchesInView = false
-//        view.addGestureRecognizer(tap)
     }
 
     // MARK: - TableView Data Source

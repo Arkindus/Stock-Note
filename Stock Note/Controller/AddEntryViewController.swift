@@ -21,6 +21,8 @@ class AddEntryViewController: UIViewController {
     @IBOutlet weak var quantityTextField: UITextField!
     @IBOutlet weak var rateTextField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var quantityFillLabel: UILabel!
+    @IBOutlet weak var rateFillLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
 //        navigationItem.title = selectedStock?.name
@@ -31,10 +33,12 @@ class AddEntryViewController: UIViewController {
         quantityTextField.layer.borderWidth = 0.75
         quantityTextField.layer.borderColor = #colorLiteral(red: 0, green: 0.7981444597, blue: 0.2795160413, alpha: 1)
         quantityTextField.layer.cornerRadius = 5
+        quantityFillLabel.isHidden = true
         
         rateTextField.layer.borderWidth = 0.75
         rateTextField.layer.borderColor = #colorLiteral(red: 0, green: 0.7981444597, blue: 0.2795160413, alpha: 1)
         rateTextField.layer.cornerRadius = 5
+        rateFillLabel.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -43,10 +47,6 @@ class AddEntryViewController: UIViewController {
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels // Replace .inline with .compact
         }
-        
-//        let tap = UIGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-//        tap.cancelsTouchesInView = false
-//        view.addGestureRecognizer(tap)
     }
     
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
@@ -74,14 +74,11 @@ class AddEntryViewController: UIViewController {
                 } catch {
                     print("Error adding new entry, \(error)")
                 }
-                //navigationController?.popViewController(animated: true)
                 performSegue(withIdentifier: K.segue.reloadSegue, sender: self)
             }
         } else {
-            let alert = UIAlertController(title: "Please fill out all fields", message: "", preferredStyle: .alert)
-            let action = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-            alert.addAction(action)
-            present(alert, animated: true, completion: nil)
+            quantityFillLabel.isHidden = false
+            rateFillLabel.isHidden = false
         }
     }
 }

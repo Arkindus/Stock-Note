@@ -29,16 +29,14 @@ class EntryTableViewController: UITableViewController {
         
         searchBar.delegate = self
         searchBar.keyboardType = .numbersAndPunctuation
+        
+        tableView.tableFooterView = UIView()
 
         loadEntries()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        let tap = UIGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-//        tap.cancelsTouchesInView = false
-//        view.addGestureRecognizer(tap)
     }
     
     // MARK: - Table view data source

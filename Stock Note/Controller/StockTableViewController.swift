@@ -28,14 +28,13 @@ class StockTableViewController: UITableViewController {
         searchBar.delegate = self
         searchBar.autocapitalizationType = .allCharacters
         
+        tableView.tableFooterView = UIView()
+        
         loadStocks()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
-//        tap.cancelsTouchesInView = false
-//        view.addGestureRecognizer(tap)
     }
 
     // MARK: - TableView Data Source Methods
@@ -52,11 +51,6 @@ class StockTableViewController: UITableViewController {
             cell.totalRateLabel?.text = K.SFormat.rate + String(format: "%.2f", stock.totalRate)
             cell.dateUpdatedLabel?.text = dateFormat.loadFormat(date: stock.dateUpdated_S ?? "")
         }
-        
-//        cell.stockNameLabel?.text = stocks?[indexPath.row].name ?? "No stocks added yet"
-//        cell.totalQuantityLabel?.text = K.quantity + String(format: "%.2f", stocks?[indexPath.row].totalQuantity ?? 0.0)
-//        cell.totalRateLabel?.text = K.rate + String(format: "%.2f", stocks?[indexPath.row].totalRate ?? 0.0)
-//        cell.dateUpdatedLabel?.text = dateFormat.loadFormat(date: stocks?[indexPath.row].dateUpdated ?? Date())
         
         return cell
     }
