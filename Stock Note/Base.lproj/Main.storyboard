@@ -409,7 +409,7 @@
                             </connections>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArchiveCell" id="VBk-lj-awS" customClass="CustomArchiveCell" customModule="Stock_Note" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="ArchiveCell" id="VBk-lj-awS" customClass="CustomArchiveCell" customModule="Stock_Note" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="414" height="98.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VBk-lj-awS" id="ncj-yW-9D2">
@@ -501,6 +501,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Stock Note" id="DVd-K6-ob6"/>
+                    <connections>
+                        <outlet property="searchBar" destination="irZ-Zd-AUP" id="SHU-OW-WJM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zX9-mK-D6q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

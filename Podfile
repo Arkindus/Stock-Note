@@ -8,5 +8,6 @@ target 'Stock Note' do
   # Pods for Stock Note
   pod 'RealmSwift'
   pod 'SwipeCellKit'
+  pod 'IQKeyboardManagerSwift'
   
 end

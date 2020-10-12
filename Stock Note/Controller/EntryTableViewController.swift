@@ -28,7 +28,6 @@ class EntryTableViewController: UITableViewController {
         tableView.rowHeight = 98.5
         
         searchBar.delegate = self
-        searchBar.placeholder = "Date"
         searchBar.keyboardType = .numbersAndPunctuation
 
         loadEntries()
@@ -36,6 +35,10 @@ class EntryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let tap = UIGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
     }
     
     // MARK: - Table view data source
@@ -84,6 +87,14 @@ class EntryTableViewController: UITableViewController {
 
 //MARK: - UISearchBarDelegate
 extension EntryTableViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.placeholder = "Date"
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.placeholder = ""
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         entries = selectedStock?.entries.filter("dateCreated_S CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: K.realm.dateCreated_D, ascending: false)
         tableView.reloadData()

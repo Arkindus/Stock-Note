@@ -51,6 +51,10 @@ class RemoveStockViewController: UIViewController {
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels // Replace .inline with .compact
         }
+        
+//        let tap = UIGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
     }
     
     //MARK: - Date PickerView Methods
@@ -83,10 +87,11 @@ class RemoveStockViewController: UIViewController {
                                         currentStock?.totalQuantity -= entry.quantity
                                         print("After: \(currentStock?.totalQuantity)")
                                         print("Before: \(currentStock?.totalRate)")
-                                        currentStock?.totalRate -= totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
+                                        currentStock?.totalRate -= entry.totalRate
                                         print("After: \(currentStock?.totalRate)")
-                                        currentStock?.dateUpdated = dateFormat.saveFormat(date: Date())
-
+                                        currentStock?.dateUpdated_D = Date()
+                                        currentStock?.dateUpdated_S = dateFormat.saveFormat(date: Date())
+                                        
                                         print("Before delete: \(currentQuantity), \(entry.quantity)")
                                         currentQuantity -= entry.quantity
                                         print("After delete: \(currentQuantity), \(entry.quantity)")
@@ -104,11 +109,12 @@ class RemoveStockViewController: UIViewController {
                                         print("Before update: \(currentQuantity), \(entry.quantity)")
                                         entry.quantity -= currentQuantity
                                         print("After update: \(currentQuantity), \(entry.quantity)")
-                                        
+                                        entry.totalRate = totalRateCalculator.totalRate(entry.individualRate, entry.quantity)
                                         let currentStock = stocks?[stockRow]
                                         currentStock?.totalQuantity -= currentQuantity
                                         currentStock?.totalRate -= totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
-                                        currentStock?.dateUpdated = dateFormat.saveFormat(date: Date())
+                                        currentStock?.dateUpdated_D = Date()
+                                        currentStock?.dateUpdated_S = dateFormat.saveFormat(date: Date())
                                         print(entry.individualRate)
                                         print(currentQuantity)
                                         boughtRate += totalRateCalculator.totalRate(entry.individualRate, currentQuantity)
@@ -134,7 +140,8 @@ class RemoveStockViewController: UIViewController {
                                 newArchive.percentageArchived = percentageCalculator.percentage(from: boughtRate, to: soldRate)
                                 print(newArchive.percentageArchived)
                                 newArchive.colorProfitOrLoss = percentageCalculator.percentageColor(from: boughtRate, to: soldRate)
-                                newArchive.dateArchived = dateFormat.saveFormat(date: datePicker.date)
+                                newArchive.dateArchived_D = datePicker.date
+                                newArchive.dateArchived_S = dateFormat.saveFormat(date: datePicker.date)
                                 print(newArchive.colorProfitOrLoss)
                                 
                                 boughtRate = 0.0
@@ -174,7 +181,7 @@ class RemoveStockViewController: UIViewController {
     
     //MARK: - Data Manipulation Methods
     func loadPickerView() {
-        stocks = realm.objects(Stock.self).sorted(byKeyPath: K.realm.dateUpdated, ascending: false)
+        stocks = realm.objects(Stock.self).sorted(byKeyPath: K.realm.dateUpdated_D, ascending: false)
         stockPicker.reloadAllComponents()
     }
 }

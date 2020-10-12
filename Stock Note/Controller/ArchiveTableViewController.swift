@@ -13,11 +13,15 @@ class ArchiveTableViewController: UITableViewController {
     let realm = try! Realm()
     var archives: Results<Archive>?
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     let dateFormat = DateFormat()
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.systemYellow]
         tableView.rowHeight = 98.5
+        
+        searchBar.autocapitalizationType = .allCharacters
         
         loadArchive()
     }
@@ -25,6 +29,9 @@ class ArchiveTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+//        let tap = UIGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
     }
 
     // MARK: - TableView Data Source
@@ -41,7 +48,7 @@ class ArchiveTableViewController: UITableViewController {
             cell.stockNameLabel.text = archive.name
             cell.quantityLabel.text = K.SFormat.quantity + String(archive.quantityArchived)
             cell.rateLabel.text = K.SFormat.rate + String(archive.rateArchived)
-            cell.dateArchivedLabel.text = dateFormat.loadFormat(date: archive.dateArchived ?? "")
+            cell.dateArchivedLabel.text = dateFormat.loadFormat(date: archive.dateArchived_S ?? "")
             
             if archive.colorProfitOrLoss == true {
                 cell.percentageLabel.text = archive.percentageArchived + "%"
@@ -59,7 +66,32 @@ class ArchiveTableViewController: UITableViewController {
     
     //MARK: - Data Manipulation Methods
     func loadArchive() {
-        archives = realm.objects(Archive.self).sorted(byKeyPath: K.realm.dateArchived, ascending: false)
+        archives = realm.objects(Archive.self).sorted(byKeyPath: K.realm.dateArchived_D, ascending: false)
         tableView.reloadData()
+    }
+}
+
+extension ArchiveTableViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.placeholder = "Stock Symbol/Date"
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.placeholder = ""
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        archives = realm.objects(Archive.self).filter("dateArchived_D CONTAINS[cd] %@ OR name CONTAINS[cd] %@", searchBar.text!, searchBar.text!).sorted(byKeyPath: K.realm.dateArchived_D, ascending: false)
+        tableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadArchive()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
     }
 }

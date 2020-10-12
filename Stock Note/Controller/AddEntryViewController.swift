@@ -43,7 +43,10 @@ class AddEntryViewController: UIViewController {
         if #available(iOS 13.4, *) {
             datePicker.preferredDatePickerStyle = .wheels // Replace .inline with .compact
         }
-        //print(selectedStock?.name)
+        
+//        let tap = UIGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
     }
     
     @IBAction func datePickerChanged(_ sender: UIDatePicker) {
@@ -65,7 +68,8 @@ class AddEntryViewController: UIViewController {
                         currentStock.entries.append(newEntry)
                         currentStock.totalQuantity += Double(quantity) ?? 0.0
                         currentStock.totalRate += totalRateCalculator.totalRate(Double(quantity) ?? 0.0, Double(rate) ?? 0.0)
-                        currentStock.dateUpdated = dateFormat.saveFormat(date: Date())
+                        currentStock.dateUpdated_D = Date()
+                        currentStock.dateUpdated_S = dateFormat.saveFormat(date: Date())
                     }
                 } catch {
                     print("Error adding new entry, \(error)")

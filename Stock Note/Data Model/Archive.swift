@@ -14,5 +14,6 @@ class Archive: Object {
     @objc dynamic var rateArchived: Double = 0.0
     @objc dynamic var percentageArchived: String = ""
     @objc dynamic var colorProfitOrLoss: Bool = false
-    @objc dynamic var dateArchived: String?
+    @objc dynamic var dateArchived_S: String?
+    @objc dynamic var dateArchived_D: Date?
 }

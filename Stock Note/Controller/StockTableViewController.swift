@@ -26,13 +26,16 @@ class StockTableViewController: UITableViewController {
         
         searchBar.delegate = self
         searchBar.autocapitalizationType = .allCharacters
-        searchBar.placeholder = "Stock Symbol"
         
         loadStocks()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+//        tap.cancelsTouchesInView = false
+//        view.addGestureRecognizer(tap)
     }
 
     // MARK: - TableView Data Source Methods
@@ -47,7 +50,7 @@ class StockTableViewController: UITableViewController {
             cell.stockNameLabel?.text = stock.name
             cell.totalQuantityLabel?.text = K.SFormat.quantity + String(format: "%.2f", stock.totalQuantity)
             cell.totalRateLabel?.text = K.SFormat.rate + String(format: "%.2f", stock.totalRate)
-            cell.dateUpdatedLabel?.text = dateFormat.loadFormat(date: stock.dateUpdated ?? "")
+            cell.dateUpdatedLabel?.text = dateFormat.loadFormat(date: stock.dateUpdated_S ?? "")
         }
         
 //        cell.stockNameLabel?.text = stocks?[indexPath.row].name ?? "No stocks added yet"
@@ -86,7 +89,8 @@ class StockTableViewController: UITableViewController {
         let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
             let newStock = Stock()
             newStock.name = textField.text!
-            newStock.dateUpdated = self.dateFormat.saveFormat(date: Date())
+            newStock.dateUpdated_D = Date()
+            newStock.dateUpdated_S = self.dateFormat.saveFormat(date: Date())
             self.saveStock(newStock)
         }
         
@@ -109,15 +113,23 @@ class StockTableViewController: UITableViewController {
     }
     
     func loadStocks() {
-        stocks = realm.objects(Stock.self).sorted(byKeyPath: K.realm.dateUpdated, ascending: false)
+        stocks = realm.objects(Stock.self).sorted(byKeyPath: K.realm.dateUpdated_D, ascending: false)
         tableView.reloadData()
     }
 }
 
 //MARK: - UISearchBarDelegate
 extension StockTableViewController: UISearchBarDelegate {
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.placeholder = "Stock Symbol"
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.placeholder = ""
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        stocks = realm.objects(Stock.self).filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: K.realm.dateUpdated, ascending: true)
+        stocks = realm.objects(Stock.self).filter("name CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: K.realm.dateUpdated_D, ascending: true)
         tableView.reloadData()
     }
     

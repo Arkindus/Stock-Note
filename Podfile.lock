@@ -1,4 +1,5 @@
 PODS:
+  - IQKeyboardManagerSwift (6.5.6)
   - Realm (5.4.8):
     - Realm/Headers (= 5.4.8)
   - Realm/Headers (5.4.8)
@@ -7,20 +8,23 @@ PODS:
   - SwipeCellKit (2.7.1)
 
 DEPENDENCIES:
+  - IQKeyboardManagerSwift
   - RealmSwift
   - SwipeCellKit
 
 SPEC REPOS:
   trunk:
+    - IQKeyboardManagerSwift
     - Realm
     - RealmSwift
     - SwipeCellKit
 
 SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   Realm: 042bbb59227a0159eda397b8a5a49fbd67495ce7
   RealmSwift: 15ddd6b3398ebfc99810811c44f095df1313adb3
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
 
-PODFILE CHECKSUM: cf52a4547d1cf7da53a50ae2bf8c2538cd730630
+PODFILE CHECKSUM: d2680111bd760a7291418b440f7e12e32b41d269
 
 COCOAPODS: 1.10.0.rc.1
